@@ -1,0 +1,21 @@
+﻿<UserControl
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Slam_MapEditor.View"
+             xmlns:helix="http://helix-toolkit.org/wpf"
+    
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Slam_MapEditor.View.VIewer3D"
+        mc:Ignorable="d"
+        >
+    <Grid>
+        <helix:HelixViewport3D  x:Name="myViewport3D" MouseEnter="myViewport3D_MouseEnter" MouseLeave="myViewport3D_MouseLeave"/>
+
+        <!--<StackPanel Orientation="Horizontal">
+            <telerik:RadButton x:Name="RadButton" Click="path_input_event" Content="경로입력" HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="80"/>
+            <telerik:RadButton x:Name="RadButton2" Click="obs_input_event" Content="장애물입력" HorizontalAlignment="Left" Height="Auto"  VerticalAlignment="Top" Width="80"/>
+            <telerik:RadButton x:Name="RadButton1" Click="delete_event" Content="삭제" HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="80"/>
+        </StackPanel>-->
+    </Grid>
+</UserControl>

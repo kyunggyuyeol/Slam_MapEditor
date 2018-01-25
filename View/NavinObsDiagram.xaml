@@ -1,0 +1,160 @@
+﻿<UserControl x:Class="Slam_MapEditor.View.NavinObsDiagram"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Primitives="clr-namespace:Telerik.Windows.Controls.Diagrams.Primitives;assembly=Telerik.Windows.Controls.Diagrams"
+        xmlns:Shape="clr-namespace:Slam_MapEditor.Shape"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        xmlns:local="clr-namespace:Slam_MapEditor.View"
+        mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="1000">
+    <UserControl.Resources>
+        <Style x:Name="Navi" TargetType="Shape:NaviShape">
+            <!--<Setter Property="OutlineMargin" Value="-100.0, -100.0, -100.0, -100.0" />-->
+            <Setter Property="IsResizingEnabled" Value="False" />
+            <Setter Property="Background" Value="DodgerBlue"/>
+            <Setter Property="IsDraggingEnabled" Value="True" />
+            <Setter Property="IsSelected" Value="True" />
+            <Setter Property="IsEditable" Value="False" />
+            <Setter Property="Width" Value="30" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="IsResizingEnabled" Value="False" />
+            <Setter Property="IsRotationEnabled" Value="False" />
+            <Setter Property="BorderThickness" Value="4" />
+            <Setter Property="BorderBrush" Value="#6C666666" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <!--<Setter Property="UseGlidingConnector" Value="True" />-->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Shape:NaviShape">
+                        <Grid>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="MouseStates">
+                                    <VisualState x:Name="Normal" />
+                                    <VisualState x:Name="MouseOver" />
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="ConnectorsAdornerVisibilityStates">
+                                    <VisualState x:Name="ConnectorsAdornerCollapsed" />
+                                    <VisualState x:Name="ConnectorsAdornerVisible">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Duration="0"
+                                                                           Storyboard.TargetName="ConnectorsControl"
+                                                                           Storyboard.TargetProperty="Visibility">
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Visibility>Visible</Visibility>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Ellipse Fill="{TemplateBinding Background}" Stroke="{Binding StrokeColor, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" StrokeThickness="3" />
+                            <!--<Ellipse Margin="{TemplateBinding OutlineMargin}" Fill="#00FFFFFF" Stroke="#FFBDD8FF" StrokeThickness="2" StrokeDashArray="2 2" />-->
+                            <ContentPresenter TextBlock.FontWeight="Bold" TextBlock.Foreground="White"
+							                  Margin="{TemplateBinding Padding}"
+							                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+							                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            <Primitives:ConnectorsControl x:Name="ConnectorsControl" 
+                                                          ItemContainerStyle="{TemplateBinding ConnectorStyle}"
+                                                          ItemsSource="{TemplateBinding Connectors}"
+                                                          Visibility="Collapsed" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Name="csmContainer" TargetType="Shape:ObsShape">
+            <Setter Property="Background" Value="White" />
+            <!--<Setter Property="telerik:DragDropManager.AllowDrag" Value="True" />-->
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="IsRotationEnabled" Value="False"/>
+            <Setter Property="AllowDrop" Value="True" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="IsDraggingEnabled" Value="True" />
+            <Setter Property="IsResizingEnabled" Value="False"/>
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="ZIndex" Value="1" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Width" Value="30" />
+            <Setter Property="MinHeight" Value="30" />
+            <Setter Property="MinWidth" Value="30" />
+            <Setter Property="MaxHeight" Value="30" />
+            <Setter Property="MaxWidth" Value="30" />
+            
+            <!--색상 및 두께 추가-->
+            <Setter Property="BorderBrush" Value="Blue"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <!--<Setter Property="Content" Value="name..." />-->
+            <!--다이어그램 최상단 모형 컨테이너 드랍 못하도록 설정-->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Shape:ObsShape}">
+                        <Border>
+                            <Grid>
+                                <Border Width="30" Height="30" Grid.ColumnSpan="2" Background="{TemplateBinding Background}" CornerRadius="3" BorderBrush="{Binding BorderBrushstroke, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"  BorderThickness="3">
+                                    <ContentPresenter TextBlock.FontWeight="Bold" TextBlock.Foreground="White"
+							                  Margin="{TemplateBinding Padding}"
+							                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+							                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                </Border>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </UserControl.Resources>
+
+
+    <Grid>
+        <telerik:RadTabControl x:Name="tabCon">
+            <telerik:RadTabItem Header="Navi">
+                <Grid>
+                    <telerik:RadDiagram x:Name="Navidiagram"
+                                        SelectionMode="Single"
+                                        MouseDown="NaviDiagram_MouseDown"
+                                        Primitives:BackgroundGrid.CellSize="30,30"
+                                        SnapX="30" SnapY="30" 
+                                        IsSnapToItemsEnabled="True"
+                                        Primitives:BackgroundGrid.IsGridVisible="True"
+                                        Primitives:BackgroundGrid.IsDynamic="True"
+                                        ShapeClicked="NaviDiagram_ShapeClicked"
+                                        SelectionChanged ="NaviDiagram_SelectionChanged"
+                                        ConnectionManipulationCompleted="NaviDiagram_ConnectionManipulationCompleted"
+                                        />
+
+
+                    <telerik:RadDiagramNavigationPane Diagram="{Binding ElementName=Navidiagram}" IsExpanded="True" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                </Grid>
+            </telerik:RadTabItem>
+            <telerik:RadTabItem Header="Obs">
+                <Grid>
+                    <telerik:RadDiagram x:Name="ObsDiagram"
+                                        SelectionMode="Single"
+                                        MouseDown="ObsDiagram_MouseDown"
+                                        Primitives:BackgroundGrid.CellSize="30,30"
+                                        SnapX="30" SnapY="30" 
+                                        IsSnapToItemsEnabled="True"
+                                        Primitives:BackgroundGrid.IsGridVisible="True"
+                                        Primitives:BackgroundGrid.IsDynamic="True"
+                                        ShapeClicked="ObsDiagram_ShapeClicked"
+                                        SelectionChanged="ObsDiagram_SelectionChanged"/>
+
+
+                    <telerik:RadDiagramNavigationPane Diagram="{Binding ElementName=ObsDiagram}" IsExpanded="True" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                </Grid>
+            </telerik:RadTabItem>
+        </telerik:RadTabControl>
+
+    </Grid>
+</UserControl> 

@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="Slam_MapEditor.View.ToolBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <TabControl x:Name="tabcontrol">
+            <TabItem x:Name="path" Header="경로" Width="100" IsSelected="True">
+                <ListBox x:Name="list_path" SelectionChanged="list_path_SelectionChanged" >
+                    <!--<ListBox x:Name="list_path" ItemsSource="{Binding list_path_SelectionChanged}" SelectionChanged="list_path_SelectionChanged" >-->
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                          <TextBlock Text="{Binding NaviMessage}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </TabItem>
+            <TabItem x:Name="obs" Header="장애물" Width="100" IsSelected="False">
+                <ListBox x:Name="list_obs" SelectionChanged="list_obs_SelectionChanged">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding ObsMessage}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </TabItem>
+        </TabControl>
+        
+
+    </Grid>
+
+</UserControl>

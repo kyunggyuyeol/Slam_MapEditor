@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="Slam_MapEditor.View.SolutionExplorer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:Converter="clr-namespace:Slam_MapEditor.Converter"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Loaded="UserControl_Loaded">
+    <Grid>
+        <TreeView x:Name="foldersItem" SelectedItemChanged="foldersItem_SelectedItemChanged" Background="#FFFFFFFF" BorderBrush="#FFFFFFFF" Foreground="#FFFFFFFF" MouseDoubleClick="foldersItem_MouseDoubleClick" MouseEnter="foldersItem_MouseEnter" MouseLeave="foldersItem_MouseLeave">
+            <TreeView.Resources>
+                <Style TargetType="{x:Type TreeViewItem}">
+                    <Setter Property="HeaderTemplate">
+                        <Setter.Value>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Name="img"  Width="20" Height="20" Stretch="Fill" 
+                                       Source="{Binding 
+                                       RelativeSource={RelativeSource 
+                                       Mode=FindAncestor, 
+                                       AncestorType={x:Type TreeViewItem}}, 
+                                       Path=Header, 
+                                       Converter={x:Static Converter:HeaderToImageConverter.Instance}}"       
+                                       />
+                                    <TextBlock Text="{Binding}" Margin="5,0" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <EventSetter Event="TreeViewItem.MouseRightButtonDown" Handler="TreeViewItem_MouseRightButtonDown"/>
+                </Style>
+                <ContextMenu x:Key ="FolderContext"  StaysOpen="true">
+                    <MenuItem Header="Delete Project" Click="deleteProject_Click"/>
+                    <MenuItem Header="Get NaviFile" Click="Get_NaviFile_Click"/>
+                </ContextMenu>
+            </TreeView.Resources>
+        </TreeView>
+    </Grid>
+</UserControl>

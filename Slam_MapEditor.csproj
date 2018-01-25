@@ -1,0 +1,722 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\OpenCvSharp3-AnyCPU.3.3.1.20171117\build\OpenCvSharp3-AnyCPU.props" Condition="Exists('packages\OpenCvSharp3-AnyCPU.3.3.1.20171117\build\OpenCvSharp3-AnyCPU.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{708C761A-E250-473A-8D81-261EA7237A34}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Slam_MapEditor</RootNamespace>
+    <AssemblyName>Slam_MapEditor</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Slam_MapEditor.App</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>if_Map2_52867.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="3DTools, Version=1.0.2614.20437, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\3DTools.dll</HintPath>
+    </Reference>
+    <Reference Include="EQATEC.Analytics.Monitor, Version=3.2.1.0, Culture=neutral, PublicKeyToken=213c7c68adb58a17, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\EQATEC.Analytics.Monitor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HelixToolkit, Version=1.0.0.0, Culture=neutral, PublicKeyToken=52aa3500039caf0d, processorArchitecture=MSIL">
+      <HintPath>packages\HelixToolkit.1.0.0\lib\portable-net45+win8+wpa81+wp8\HelixToolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HelixToolkit.Wpf, Version=1.0.0.0, Culture=neutral, PublicKeyToken=52aa3500039caf0d, processorArchitecture=MSIL">
+      <HintPath>packages\HelixToolkit.Wpf.1.0.0\lib\net45\HelixToolkit.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OpenCvSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>packages\OpenCvSharp3-AnyCPU.3.3.1.20171117\lib\net40\OpenCvSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OpenCvSharp.Blob, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>packages\OpenCvSharp3-AnyCPU.3.3.1.20171117\lib\net40\OpenCvSharp.Blob.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OpenCvSharp.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>packages\OpenCvSharp3-AnyCPU.3.3.1.20171117\lib\net40\OpenCvSharp.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OpenCvSharp.UserInterface, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>packages\OpenCvSharp3-AnyCPU.3.3.1.20171117\lib\net40\OpenCvSharp.UserInterface.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SharpDX, Version=2.5.0.0, Culture=neutral, PublicKeyToken=627a3d6d1956f55a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\SharpDX\SharpDX.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SharpDX.D3DCompiler, Version=2.5.0.0, Culture=neutral, PublicKeyToken=627a3d6d1956f55a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\SharpDX\SharpDX.D3DCompiler.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SharpDX.Direct2D1, Version=2.5.0.0, Culture=neutral, PublicKeyToken=627a3d6d1956f55a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\SharpDX\SharpDX.Direct2D1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SharpDX.Direct3D10, Version=2.5.0.0, Culture=neutral, PublicKeyToken=627a3d6d1956f55a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\SharpDX\SharpDX.Direct3D10.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SharpDX.Direct3D9, Version=2.5.0.0, Culture=neutral, PublicKeyToken=627a3d6d1956f55a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\SharpDX\SharpDX.Direct3D9.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SharpDX.DXGI, Version=2.5.0.0, Culture=neutral, PublicKeyToken=627a3d6d1956f55a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\SharpDX\SharpDX.DXGI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Serialization" />
+    <Reference Include="Telerik.Documents.SpreadsheetStreaming, Version=2017.3.1010.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Documents.SpreadsheetStreaming.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Pivot.Core, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Pivot.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Pivot.DataProviders.Adomd, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Pivot.DataProviders.Adomd.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Pivot.DataProviders.Queryable, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Pivot.DataProviders.Queryable.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Pivot.DataProviders.Xmla, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Pivot.DataProviders.Xmla.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Analytics, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Analytics.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Cloud, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Cloud.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Cloud.Controls, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Cloud.Controls.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Controls.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Chart, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Controls.Chart.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Chart.Direct2D, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Controls.Chart.Direct2D.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Data, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Controls.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.DataServices, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Controls.DataServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.DataServices50, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Controls.DataServices50.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.DataServices60, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Controls.DataServices60.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.DataVisualization, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Controls.DataVisualization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Diagrams, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Controls.Diagrams.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Diagrams.Extensions, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Controls.Diagrams.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Docking, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Controls.Docking.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.EntityFramework, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Controls.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Expressions, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Controls.Expressions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.FileDialogs, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Controls.FixedDocumentViewers, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Controls.FixedDocumentViewers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.FixedDocumentViewersUI, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Controls.FixedDocumentViewersUI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.GanttView, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Controls.GanttView.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.GridView, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Controls.GridView.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.GridView.Export, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Controls.GridView.Export.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.ImageEditor, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Controls.ImageEditor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Input, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Controls.Input.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Navigation, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Controls.Navigation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Pivot, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Controls.Pivot.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.PivotFieldList, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Controls.PivotFieldList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.RibbonView, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Controls.RibbonView.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.RichTextBoxUI, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Controls.RichTextBoxUI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.ScheduleView, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Controls.ScheduleView.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Spreadsheet, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Controls.Spreadsheet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Data, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Diagrams.Core, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Diagrams.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Documents.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Core, Version=2017.3.1010.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Documents.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Fixed, Version=2017.3.1010.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Documents.Fixed.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Flow, Version=2017.3.1010.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Documents.Flow.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Flow.FormatProviders.Pdf, Version=2017.3.1010.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Documents.Flow.FormatProviders.Pdf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.FormatProviders.Html, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Documents.FormatProviders.Html.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.FormatProviders.MsRichTextBoxXaml, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Documents.FormatProviders.MsRichTextBoxXaml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.FormatProviders.OpenXml, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Documents.FormatProviders.OpenXml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.FormatProviders.Pdf, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Documents.FormatProviders.Pdf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.FormatProviders.Rtf, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Documents.FormatProviders.Rtf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.FormatProviders.Xaml, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Documents.FormatProviders.Xaml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Proofing, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Documents.Proofing.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Proofing.Dictionaries.En-US, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Documents.Proofing.Dictionaries.En-US.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Proofing.RadGridView, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Documents.Proofing.RadGridView.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Spreadsheet, Version=2017.3.1010.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Documents.Spreadsheet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml, Version=2017.3.1010.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Spreadsheet.FormatProviders.Pdf, Version=2017.3.1010.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Documents.Spreadsheet.FormatProviders.Pdf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.PersistenceFramework, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.PersistenceFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Scheduling.Core, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Scheduling.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Themes.Office2016, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Themes.VisualStudio2013">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Themes.VisualStudio2013.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Zip, Version=2017.3.1010.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>lib\RCWPF\2017.3.1018.45.NoXaml\Telerik.Windows.Zip.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="WPFCustomMessageBox, Version=1.0.7.39267, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\WPFCustomMessageBox.1.0.7\lib\WPFCustomMessageBox.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="YamlSerializer, Version=0.9.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\YamlSerializer.1.0\lib\Net35\YamlSerializer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="common\WaitCursor.cs" />
+    <Compile Include="Converter\HeaderToImageConverter.cs" />
+    <Compile Include="CustomDockingPanesFactory.cs" />
+    <Compile Include="CustomSaveLoadLayoutHelper.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="Mice\Tools.cs" />
+    <Compile Include="Model\Data.cs" />
+    <Compile Include="Model\DataManager.cs" />
+    <Compile Include="Model\CoordinateTransformation.cs" />
+    <Compile Include="Model\ExistingPath.cs" />
+    <Compile Include="Model\NaviInfo.cs" />
+    <Compile Include="Model\MapPoint.cs" />
+    <Compile Include="Model\NaviLine.cs" />
+    <Compile Include="Model\NaviPoint.cs" />
+    <Compile Include="Model\NodesInformation.cs" />
+    <Compile Include="Model\ObsInfo.cs" />
+    <Compile Include="Model\ObsPoint.cs" />
+    <Compile Include="Model\PathData.cs" />
+    <Compile Include="Model\SlamImageAnalyzer.cs" />
+    <Compile Include="popup\DrawPathOrObstacle.xaml.cs">
+      <DependentUpon>DrawPathOrObstacle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="popup\NewProject.xaml.cs">
+      <DependentUpon>NewProject.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Shape\Concustom.cs" />
+    <Compile Include="Shape\custumData.cs" />
+    <Compile Include="Shape\NaviShape.cs" />
+    <Compile Include="Shape\ObsShape.cs" />
+    <Compile Include="ViewModel\VideoMapViewModel.cs" />
+    <Compile Include="ViewModel\PaneViewModel_WPF.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel_WPF.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\ErrorList.xaml.cs">
+      <DependentUpon>ErrorList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\NavinObsDiagram.xaml.cs">
+      <DependentUpon>NavinObsDiagram.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Output.xaml.cs">
+      <DependentUpon>Output.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PropertiesPane.xaml.cs">
+      <DependentUpon>PropertiesPane.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ServerExplorer.xaml.cs">
+      <DependentUpon>ServerExplorer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SolutionExplorer.xaml.cs">
+      <DependentUpon>SolutionExplorer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ToolBox.xaml.cs">
+      <DependentUpon>ToolBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ImageMap.xaml.cs">
+      <DependentUpon>ImageMap.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ToolBox1.xaml.cs">
+      <DependentUpon>ToolBox1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\VIewer3D.xaml.cs">
+      <DependentUpon>VIewer3D.xaml</DependentUpon>
+    </Compile>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="popup\DrawPathOrObstacle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="popup\NewProject.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ErrorList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NavinObsDiagram.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Output.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PropertiesPane.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ServerExplorer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SolutionExplorer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ToolBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ImageMap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ToolBox1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\VIewer3D.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Docking\bullet_toggle_minus.png" />
+    <Resource Include="Images\Docking\bullet_toggle_plus.png" />
+    <Resource Include="Images\Docking\connect_to_database.png" />
+    <Resource Include="Images\Docking\connect_to_server.png" />
+    <Resource Include="Images\Docking\data.png" />
+    <Resource Include="Images\Docking\data_white.png" />
+    <Resource Include="Images\Docking\ErrorList\delete.png" />
+    <Resource Include="Images\Docking\ErrorList\information.png" />
+    <Resource Include="Images\Docking\ErrorList\warning.png" />
+    <Resource Include="Images\Docking\icon1.png" />
+    <Resource Include="Images\Docking\icon2.png" />
+    <Resource Include="Images\Docking\lightning.png" />
+    <Resource Include="Images\Docking\Output\01.png" />
+    <Resource Include="Images\Docking\Output\02.png" />
+    <Resource Include="Images\Docking\Output\03.png" />
+    <Resource Include="Images\Docking\Output\04.png" />
+    <Resource Include="Images\Docking\Output\05.png" />
+    <Resource Include="Images\Docking\Products\Big\Docking.png" />
+    <Resource Include="Images\Docking\properties_icon.png" />
+    <Resource Include="Images\Docking\refresh.png" />
+    <Resource Include="Images\Docking\server.png" />
+    <Resource Include="Images\Docking\ServerExplorer\database_connect.png" />
+    <Resource Include="Images\Docking\ServerExplorer\database_connect_white.png" />
+    <Resource Include="Images\Docking\ServerExplorer\event_log.png" />
+    <Resource Include="Images\Docking\ServerExplorer\event_log_white.png" />
+    <Resource Include="Images\Docking\ServerExplorer\folder.png" />
+    <Resource Include="Images\Docking\ServerExplorer\folder_open_white.png" />
+    <Resource Include="Images\Docking\ServerExplorer\folder_white.png" />
+    <Resource Include="Images\Docking\ServerExplorer\hristov.png" />
+    <Resource Include="Images\Docking\ServerExplorer\hristov_white.png" />
+    <Resource Include="Images\Docking\ServerExplorer\management_classes.png" />
+    <Resource Include="Images\Docking\ServerExplorer\management_classes_white.png" />
+    <Resource Include="Images\Docking\ServerExplorer\management_events.png" />
+    <Resource Include="Images\Docking\ServerExplorer\message_queues.png" />
+    <Resource Include="Images\Docking\ServerExplorer\message_queues_white.png" />
+    <Resource Include="Images\Docking\ServerExplorer\performance_counters.png" />
+    <Resource Include="Images\Docking\ServerExplorer\references.png" />
+    <Resource Include="Images\Docking\ServerExplorer\references_white.png" />
+    <Resource Include="Images\Docking\ServerExplorer\servers.png" />
+    <Resource Include="Images\Docking\ServerExplorer\servers_white.png" />
+    <Resource Include="Images\Docking\ServerExplorer\services.png" />
+    <Resource Include="Images\Docking\ServerExplorer\services_white.png" />
+    <Resource Include="Images\Docking\servers.png" />
+    <Resource Include="Images\Docking\SolutionExplorer\assembly.png" />
+    <Resource Include="Images\Docking\SolutionExplorer\assembly_white.png" />
+    <Resource Include="Images\Docking\SolutionExplorer\bin.png" />
+    <Resource Include="Images\Docking\SolutionExplorer\data.png" />
+    <Resource Include="Images\Docking\SolutionExplorer\data_white.png" />
+    <Resource Include="Images\Docking\SolutionExplorer\description.png" />
+    <Resource Include="Images\Docking\SolutionExplorer\enumeration.png" />
+    <Resource Include="Images\Docking\SolutionExplorer\enumeration_white.png" />
+    <Resource Include="Images\Docking\SolutionExplorer\folder.png" />
+    <Resource Include="Images\Docking\SolutionExplorer\folder_white.png" />
+    <Resource Include="Images\Docking\SolutionExplorer\icon1.png" />
+    <Resource Include="Images\Docking\SolutionExplorer\icon11.png" />
+    <Resource Include="Images\Docking\SolutionExplorer\icon2.png" />
+    <Resource Include="Images\Docking\SolutionExplorer\icon3.png" />
+    <Resource Include="Images\Docking\SolutionExplorer\icon4.png" />
+    <Resource Include="Images\Docking\SolutionExplorer\icon5.png" />
+    <Resource Include="Images\Docking\SolutionExplorer\icon6.png" />
+    <Resource Include="Images\Docking\SolutionExplorer\icon7.png" />
+    <Resource Include="Images\Docking\SolutionExplorer\icon8.png" />
+    <Resource Include="Images\Docking\SolutionExplorer\icon9.png" />
+    <Resource Include="Images\Docking\SolutionExplorer\image.png" />
+    <Resource Include="Images\Docking\SolutionExplorer\image_white.png" />
+    <Resource Include="Images\Docking\SolutionExplorer\namespace.png" />
+    <Resource Include="Images\Docking\SolutionExplorer\namespace_white.png" />
+    <Resource Include="Images\Docking\SolutionExplorer\properties.png" />
+    <Resource Include="Images\Docking\SolutionExplorer\properties_white.png" />
+    <Resource Include="Images\Docking\SolutionExplorer\references.png" />
+    <Resource Include="Images\Docking\SolutionExplorer\references_white.png" />
+    <Resource Include="Images\Docking\SolutionExplorer\usercontrol.png" />
+    <Resource Include="Images\Docking\SolutionExplorer\_image.png" />
+    <Resource Include="Images\Docking\sortasc.png" />
+    <Resource Include="Images\Docking\stop_refresh.png" />
+    <Resource Include="Images\Docking\Toolbox\chartview.png" />
+    <Resource Include="Images\Docking\Toolbox\datafilter.png" />
+    <Resource Include="Images\Docking\Toolbox\dataform.png" />
+    <Resource Include="Images\Docking\Toolbox\datapager.png" />
+    <Resource Include="Images\Docking\Toolbox\imageeditor.png" />
+    <Resource Include="Images\Docking\Toolbox\map.png" />
+    <Resource Include="Images\Docking\Toolbox\pdfviewer.png" />
+    <Resource Include="Images\Docking\Toolbox\pivotgrid.png" />
+    <Resource Include="Images\Docking\Toolbox\radbook_sl.png" />
+    <Resource Include="Images\Docking\Toolbox\radcontextmenu_sl.png" />
+    <Resource Include="Images\Docking\Toolbox\radcoverflow_sl.png" />
+    <Resource Include="Images\Docking\Toolbox\radcube_sl.png" />
+    <Resource Include="Images\Docking\Toolbox\radmenu_sl.png" />
+    <Resource Include="Images\Docking\Toolbox\radoutlookbar_sl.png" />
+    <Resource Include="Images\Docking\Toolbox\radpanelbar_sl.png" />
+    <Resource Include="Images\Docking\Toolbox\radribbonbar_sl.png" />
+    <Resource Include="Images\Docking\Toolbox\radribboncontextualgroupcontainer_sl.png" />
+    <Resource Include="Images\Docking\Toolbox\radribbonwindow_sl.png" />
+    <Resource Include="Images\Docking\Toolbox\radrichtextboxribbonui_sl.png" />
+    <Resource Include="Images\Docking\Toolbox\radrichtextbox_sl.png" />
+    <Resource Include="Images\Docking\Toolbox\radscheduler_sl.png" />
+    <Resource Include="Images\Docking\Toolbox\radslider_sl.png" />
+    <Resource Include="Images\Docking\Toolbox\radtabcontrol_sl.png" />
+    <Resource Include="Images\Docking\Toolbox\radtileview_sl.png" />
+    <Resource Include="Images\Docking\Toolbox\radtoolbar_sl.png" />
+    <Resource Include="Images\Docking\Toolbox\radtreelist_sl.png" />
+    <Resource Include="Images\Docking\Toolbox\radtreeview_sl.png" />
+    <Resource Include="Images\Docking\Toolbox\radwindow_sl.png" />
+    <Resource Include="Images\Docking\Toolbox\richtextbox.png" />
+    <Resource Include="Images\Docking\Toolbox\sparklines.png" />
+    <Resource Include="Images\Docking\Toolbox\timebar.png" />
+    <Resource Include="Images\Docking\Toolbox\timeline.png" />
+    <Resource Include="Images\Docking\Toolbox\treemapandpivotmap.png" />
+    <Resource Include="Images\Docking\_data.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon\slam.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Docking\VideoMap\Start.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon\delete.png" />
+    <Resource Include="Images\Icon\delete2.png" />
+    <Resource Include="Images\Icon\navi.png" />
+    <Resource Include="Images\Icon\oppen.png" />
+    <Resource Include="Images\Icon\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\if_Map2_52867.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="if_Map2_52867.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon\newfile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon\folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon\mapProject.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\if_Map2_52867.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon\fast_forward.png" />
+    <Resource Include="Images\Icon\play.png" />
+    <Resource Include="Images\Icon\rewind.png" />
+    <Resource Include="Images\Icon\skip.png" />
+    <Resource Include="Images\Icon\stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon\preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon\gate.png" />
+    <Resource Include="Images\Icon\stairs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon\crosswalk.png" />
+    <Resource Include="Images\Icon\etc.png" />
+    <Resource Include="Images\Icon\traffic lights.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon\trees.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon\getpoint.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon\btn_fast.png" />
+    <Resource Include="Images\Icon\btn_speed.png" />
+    <Resource Include="Images\Icon\btn_start.png" />
+    <Resource Include="Images\Icon\btn_stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon\clear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon\pushpin.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\OpenCvSharp3-AnyCPU.3.3.1.20171117\build\OpenCvSharp3-AnyCPU.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\OpenCvSharp3-AnyCPU.3.3.1.20171117\build\OpenCvSharp3-AnyCPU.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

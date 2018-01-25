@@ -1,0 +1,105 @@
+﻿<UserControl x:Class="Slam_MapEditor.View.PropertiesPane"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <telerik:RadPropertyGrid x:Name="property_navi" Grid.Row="0" LabelColumnWidth="120"  AutoGeneratePropertyDefinitions="False" IsGrouped="True" RenderMode="Flat" UseLayoutRounding="True" Visibility="Collapsed">
+            <telerik:RadPropertyGrid.PropertyDefinitions>
+                <telerik:PropertyDefinition OrderIndex="0" DisplayName="INDEX" Binding="{Binding Index, Mode=TwoWay}" GroupName="Node Info" IsReadOnly="True" Description="Node Index"/>
+
+                <telerik:PropertyDefinition OrderIndex="1" DisplayName="Node Type"  GroupName="Node Info" IsReadOnly="False" Description="Node Type">
+                    <telerik:PropertyDefinition.EditorTemplate>
+                        <DataTemplate>
+                            <!--<telerik:RadComboBox Text="{Binding PointType}" SelectedIndex="{Binding PointType, Mode=TwoWay}" ItemsSource="{Binding NodeType}"/>-->
+                            <ListView ItemsSource="{Binding NodeType}">
+                                <ListView.View> 
+                                    <GridView>  
+                                        <GridViewColumn Header="설비" Width="120">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <CheckBox Content="{Binding Name}" IsChecked="{Binding IsChecked, Mode=TwoWay}"/>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </DataTemplate>
+                    </telerik:PropertyDefinition.EditorTemplate>
+                </telerik:PropertyDefinition>
+
+                <telerik:PropertyDefinition OrderIndex="2" DisplayName="NaviPointX"  Binding="{Binding NaviPointX, Mode=TwoWay}"  GroupName="Node Info" IsReadOnly="True" Description="Poisition X"/>
+                <telerik:PropertyDefinition OrderIndex="3" DisplayName="NaviPointY" Binding="{Binding NaviPointY, Mode=TwoWay}" GroupName="Node Info" IsReadOnly="True" Description="Poisition Y"/>
+            </telerik:RadPropertyGrid.PropertyDefinitions>
+        </telerik:RadPropertyGrid>
+
+        <telerik:RadPropertyGrid x:Name="property_obs" Grid.Row="0" LabelColumnWidth="120"  AutoGeneratePropertyDefinitions="False" IsGrouped="True" RenderMode="Flat" UseLayoutRounding="True" Visibility="Collapsed">
+            <telerik:RadPropertyGrid.PropertyDefinitions>
+                <telerik:PropertyDefinition OrderIndex="0" DisplayName="INDEX" Binding="{Binding Index, Mode=TwoWay}" GroupName="Node Info" IsReadOnly="True" Description="Node Index"/>
+
+                <telerik:PropertyDefinition OrderIndex="1" DisplayName="Node Type" Binding="{Binding PointType, Mode=TwoWay}" GroupName="Node Info" IsReadOnly="False" Description="Node Type">
+                    <telerik:PropertyDefinition.EditorTemplate>
+                        <DataTemplate>
+                            <telerik:RadComboBox Text="{Binding PointType}" SelectedIndex="{Binding PointType, Mode=TwoWay}" ItemsSource="{Binding NodeType}"/>
+                        </DataTemplate>
+                    </telerik:PropertyDefinition.EditorTemplate>
+                </telerik:PropertyDefinition>
+
+                <telerik:PropertyDefinition OrderIndex="2" DisplayName="NaviPointX"  Binding="{Binding ObsPointX, Mode=TwoWay}"  GroupName="Node Info" IsReadOnly="True" Description="Poisition X"/>
+                <telerik:PropertyDefinition OrderIndex="3" DisplayName="NaviPointY" Binding="{Binding ObsPointY, Mode=TwoWay}" GroupName="Node Info" IsReadOnly="True" Description="Poisition Y"/>
+
+                <!--디스크립션1-->
+                <telerik:PropertyDefinition OrderIndex="4" DisplayName="Description" Binding="{Binding Description, Mode=TwoWay}" GroupName="Description Info" IsReadOnly="False" Description="Description">
+                    <telerik:PropertyDefinition.EditorTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Description, Mode=TwoWay}"/>
+                        </DataTemplate>
+                    </telerik:PropertyDefinition.EditorTemplate>
+                </telerik:PropertyDefinition>
+
+                <!--디스크립션2--><!--
+                <telerik:PropertyDefinition OrderIndex="5" DisplayName="Description2" Binding="{Binding Description2, Mode=TwoWay}" GroupName="Description Info" IsReadOnly="False" Description="Description2">
+                    <telerik:PropertyDefinition.EditorTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Description2, Mode=TwoWay}"/>
+                        </DataTemplate>
+                    </telerik:PropertyDefinition.EditorTemplate>
+                </telerik:PropertyDefinition>
+
+                --><!--디스크립션3--><!--
+                <telerik:PropertyDefinition OrderIndex="6" DisplayName="Description3" Binding="{Binding Description3, Mode=TwoWay}" GroupName="Description Info" IsReadOnly="False" Description="Description3">
+                    <telerik:PropertyDefinition.EditorTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Description3, Mode=TwoWay}"/>
+                        </DataTemplate>
+                    </telerik:PropertyDefinition.EditorTemplate>
+                </telerik:PropertyDefinition>
+
+                --><!--디스크립션4--><!--
+                <telerik:PropertyDefinition OrderIndex="7" DisplayName="Description4" Binding="{Binding Description4, Mode=TwoWay}" GroupName="Description Info" IsReadOnly="False" Description="Description4">
+                    <telerik:PropertyDefinition.EditorTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Description4, Mode=TwoWay}"/>
+                        </DataTemplate>
+                    </telerik:PropertyDefinition.EditorTemplate>
+                </telerik:PropertyDefinition>
+
+                --><!--디스크립션5--><!--
+                <telerik:PropertyDefinition OrderIndex="8" DisplayName="Description5" Binding="{Binding Description5, Mode=TwoWay}" GroupName="Description Info" IsReadOnly="False" Description="Description5">
+                    <telerik:PropertyDefinition.EditorTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Description5, Mode=TwoWay}"/>
+                        </DataTemplate>
+                    </telerik:PropertyDefinition.EditorTemplate>
+                </telerik:PropertyDefinition>-->
+
+            </telerik:RadPropertyGrid.PropertyDefinitions>
+        </telerik:RadPropertyGrid>
+        
+    </Grid>
+        
+</UserControl>

@@ -1,0 +1,70 @@
+﻿<Window x:Class="Slam_MapEditor.popup.NewProject"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Slam_MapEditor.popup"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        xmlns:wizard="clr-namespace:Telerik.Windows.Controls.Wizard;assembly=Telerik.Windows.Controls.Navigation"
+        mc:Ignorable="d"
+        Title="NewProjectWizard" Height="450" Width="400" Icon="/Images/if_Map2_52867.png" ResizeMode="NoResize">
+    <Grid>
+        <Grid.Resources>
+            <DataTemplate x:Key="headerTemplate">
+                <Border Height="80" Background="#FF999999" Width="auto" HorizontalAlignment="Stretch" Margin="-7">
+                    <Grid>
+                        <TextBlock Text="New Project Wizard" Foreground="#FFFFFFFF" Margin="15,0,0,0" VerticalAlignment="Center" FontWeight="Bold" FontSize="24" FontFamily="Segoe UI"/>
+                    </Grid>
+                </Border>
+            </DataTemplate>
+        </Grid.Resources>
+        <telerik:RadWizard x:Name="wizard" Finish="wizard_Finish">
+            <telerik:RadWizard.WizardPages>
+                <telerik:WizardPage HeaderTemplate="{StaticResource headerTemplate}" x:Name="newNodePage" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+                    <telerik:WizardPage.FooterTemplate>
+                        <DataTemplate>
+                            <Border Background="#FF999999" Height="40" Margin="-7">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,16,0">
+                                    <telerik:RadButton Content="Finish" Command="wizard:RadWizardCommands.Finish" MinWidth="70" BorderThickness="0" VerticalAlignment="Center" Click="Finish_Click"/>
+                                    <telerik:RadButton Content="Cencel" Command="wizard:RadWizardCommands.Cancel" Margin="7,0,0,0" MinWidth="70" BorderThickness="0" VerticalAlignment="Center" Click="Close_Click"/>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </telerik:WizardPage.FooterTemplate>
+                    <Grid Background="#FFF4F4F5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="30" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" FontSize="12" VerticalAlignment="Center" Margin="5 0 0 0">Project Name</TextBlock>
+                        <TextBox x:Name="tb_SimulationName" Grid.Column="1" Margin="3" />
+
+                        <TextBlock Grid.Row="1" Grid.Column="0" FontSize="12" VerticalAlignment="Center" Margin="5 0 0 0">Map File</TextBlock>
+                        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" Margin="3">
+                            <TextBox x:Name="txt_filename" Width="220"  IsReadOnly="True"/>
+                            <Button x:Name="btn_getfile" Width="40" Content="..." Click="btn_getfile_Click"/>
+                        </StackPanel>
+
+                        <TextBlock Grid.Row="2" Grid.Column="0" FontSize="12" VerticalAlignment="Center" Margin="5 0 0 0">Map Image</TextBlock>
+                        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1" Margin="3">
+                            <TextBox x:Name="txt_folderName" Width="220"  IsReadOnly="True"/>
+                            <Button x:Name="btn_getfolder" Width="40" Content="..." Click="btn_getfolder_Click"/>
+                        </StackPanel>
+                    </Grid>
+                </telerik:WizardPage>
+            </telerik:RadWizard.WizardPages>
+        </telerik:RadWizard>
+    </Grid>
+</Window>
